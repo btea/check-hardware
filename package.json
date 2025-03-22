@@ -4,6 +4,10 @@
   "description": "check hardware information",
   "main": "index.mjs",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btea/check-hardware.git"
+  },
   "bin": {
     "check-hardware": "./index.mjs"
   },
