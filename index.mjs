@@ -6,9 +6,12 @@ const isWindows = os.platform() === 'win32'
 const isLinux = os.platform() === 'linux'
 
 const greenText = str => `\x1b[32m${str}\x1b[0m`;
+const redText = str => `\x1b[31m${str}\x1b[0m`;
 
 async function getMemoryDetails() {
 	const slots = await getMemorySlots();
+	if (slots === 0) 
+		return;
   if (isWindows) {
     // Query additional property SMBIOSMemoryType for modern memory types.
     const command = 'wmic memorychip get Manufacturer,PartNumber,Capacity,Speed,MemoryType,SMBIOSMemoryType';
@@ -120,7 +123,8 @@ async function getMemorySlots() {
 			});
 		})
   } else {
-		Promise.reject(new Error('Unsupported OS'));
+		console.error(redText('Unsupported OS'));
+		return Promise.resolve(0)
   }
 }
 
