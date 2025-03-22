@@ -1,2 +1,2 @@
 # check-hardware
-check hardware info
+pnpx check-hardware
