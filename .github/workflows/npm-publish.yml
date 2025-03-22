@@ -24,7 +24,8 @@ jobs:
       - name: update npm
         run: npm install npm@latest -g 
       - name: publish
-        run: npm publish --access public --provenance
+        # run: npm publish --access public --provenance
+        run: sh ./scripts/publish.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM }}
